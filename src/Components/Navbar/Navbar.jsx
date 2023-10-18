@@ -5,10 +5,10 @@ import logo from '../../assets/gplogo.jpg'
 const Navbar = () => {
     return (
         <div>
-            <div className="navbar bg-[#FFD9C0] rounded-xl">
+            <div className="navbar bg-base-300 rounded-xl">
                 <div className="flex-1">
-                    <img className='h-20 w-20' src={logo} alt="" />
-                    <a className="normal-case text-xl">GlOwPaLeTtE</a>
+                    <img className='h-20 w-20 mr-2' src={logo} alt="" />
+                    <a className="normal-case text-xl font-bold italic text-pink-700">GlOw<span className='text-orange-700'>PaLeTtE</span></a>
                 </div>
                 <div className="flex items-center">
                 <div><button className='btn btn-ghost'>Add Product</button></div>
