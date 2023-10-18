@@ -1,23 +1,34 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const {userLogin} = useContext(AuthContext)
-     const handleLogin = e =>{
-        e.preventDefault()
+    const location = useLocation();
+    const navigate = useNavigate()
+    const handleLogin = e => {
+        e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
-         userLogin(email,password)
-         .then(result =>{
-            console.log(result.user);
-         })
-         .catch(err=>{
-            console.log(err);
-         })
-     }
+      
+        if (!email, !password) {
+          toast.error("Email or password does not match match");
+        } else {
+          userLogin(email, password)
+            .then(result => {
+              console.log(result.user);
+              navigate(location?.state ? location.state : "/");
+            })
+            .catch(err => {
+              console.log(err);
+              toast.error("Login failed"); 
+            });
+        }
+      };
+      
 
     return (
         <div>
@@ -47,6 +58,7 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-error">Login</button>
+                                <ToastContainer></ToastContainer>
                             </div>
                             <div><h2>New to this Website? please <Link className="font-bold text-blue-600" to="/signup">Signup</Link> </h2></div>
                         </form>

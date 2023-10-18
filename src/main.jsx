@@ -10,6 +10,9 @@ import AuthProvider from './Components/AuthProvider/AuthProvider.jsx';
 import SignUp from './Components/Pages/SignUp.jsx';
 import Login from './Components/Pages/Login.jsx';
 import MainLayout from './Components/MainLayout/MainLayout.jsx';
+import AddProduct from './Components/AddProduct/AddProduct';
+import BrandDetails from './Components/BrandDetails';
+import Private from './Components/Private/Private';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,15 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+      {
+        path: "/addproduct",
+        element:<Private> <AddProduct></AddProduct></Private>
+      },
+      {
+        path:"/branddetails",
+        element: <BrandDetails></BrandDetails>,
+        loader: () => fetch("http://localhost:5000/products")
       }
     ]
   },

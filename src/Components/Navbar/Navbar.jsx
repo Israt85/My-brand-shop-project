@@ -1,8 +1,23 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/gplogo.jpg'
+import { useContext } from 'react';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 
 const Navbar = () => {
+    const {user,userLogOut} = useContext(AuthContext)
+    console.log(user);
+
+    const hangleLogOut = () =>{
+        userLogOut()
+        .then(result=>{
+            console.log(result.user);
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+
+    }
     return (
         <div>
             <div className="navbar bg-base-300 rounded-xl">
@@ -10,8 +25,16 @@ const Navbar = () => {
                     <img className='h-20 w-20 mr-2' src={logo} alt="" />
                     <a className="normal-case text-xl font-bold italic text-pink-700">GlOw<span className='text-orange-700'>PaLeTtE</span></a>
                 </div>
+                <div className=' w-40 border bg-red-50'>
+                {
+                     user && <img className="w-20 h-20 mr-2 rounded-full" src={user.photoURL}/>
+                }
+                {
+                    user && <h2 className='text-xl text-red-500'>{user.displayName}</h2>
+                }
+                </div>
                 <div className="flex items-center">
-                <div><button className='btn btn-ghost'>Add Product</button></div>
+                <div><Link to="/addproduct"><button className='btn btn-ghost'>Add Product</button></Link></div>
                     <div className="dropdown dropdown-end ">
                        
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -32,16 +55,17 @@ const Navbar = () => {
                     </div>
                  
                     <div className="dropdown dropdown-end">
-                    <Link to='/login'><button className='btn btn-ghost'>Login</button></Link>
+                    
+                    <Link to='/'><button >Home</button></Link>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
                             <Link to='/signup'><button >SignUp</button></Link>
                             </li>
-                            <li><a>Logout</a></li>
+                            <li>{
+                                user? <button onClick={hangleLogOut}>LogOut</button> : <Link to='/login'><button>Login</button></Link>
+                                }</li>
                             
-                            <li>
-                            <Link to='/'><button >Home</button></Link>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
