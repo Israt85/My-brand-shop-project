@@ -16,6 +16,7 @@ import Private from './Components/Private/Private';
 import Details from './Components/Details';
 import Update from './Components/Update';
 import ErrorPage from './Components/ErrorPage';
+import MyCart from './Components/MyCart';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
            
         }
         
+        },{
+          path: '/cart',
+          element:<MyCart></MyCart>,
+          loader: () =>fetch('http://localhost:5000/cart')
         }
     ]
   },

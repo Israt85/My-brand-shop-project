@@ -44,7 +44,7 @@ const filteredProducts = products?.filter(product => product.brand.toLowerCase()
 </div> : ""
 }
             <h2 className="text-2xl font-bold text-center">Product of the Brand : {brand}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mx-20">
+            <div className="grid grid-cols-1 mt-6 md:grid-cols-2 gap-10 mx-20">
                 {
                   filteredProducts.length >0 ? (filteredProducts.map(product => (
                     <Product key={product._id} products={product} ></Product>) 

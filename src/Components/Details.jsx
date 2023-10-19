@@ -1,4 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Details = () => {
@@ -6,6 +8,24 @@ const Details = () => {
     const navigate = useNavigate()
   const product = state?.products || {};
   const {_id, name, photo, brand, rating, price, description } = product
+
+  const handleAddToCart = () =>{
+    fetch("http://localhost:5000/cart",{
+      method: "POST",
+      headers:{
+        'content-type' : 'application/json'
+      },
+      body: JSON.stringify({product : _id, name, photo, brand, rating, price, description})
+
+    })
+    .then(res =>res.json())
+    .then(data=>{
+     if(data.insertedId
+      ){
+        toast("successfully added this product in your cart")
+      }
+    })
+  }
     return (
         <div>
            <button className="btn mt-4 btn-primary" onClick={() => navigate(-1)}>Back</button>
@@ -21,7 +41,8 @@ const Details = () => {
             <h2>${price}</h2>
             <h2>{rating}</h2>
           </div>
-             <button className="btn bg-orange-500">Add to cart</button>
+             <button onClick={handleAddToCart} className="btn bg-orange-500">Add to cart</button>
+             <ToastContainer></ToastContainer>
         </div>
       </div>
         </div>

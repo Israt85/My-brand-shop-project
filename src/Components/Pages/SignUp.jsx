@@ -32,7 +32,7 @@ const SignUp = () => {
             updateUserProfile(name,photo)
             .then(result=>{
                 console.log(result.user);
-               
+                
             })
             .catch(err =>{
                 console.log(err);
