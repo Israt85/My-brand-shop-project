@@ -49,8 +49,22 @@ const router = createBrowserRouter([
       },{
         path : "/update/:id",
         element: <Update></Update>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
-      }
+        loader: ({ params }) => {
+          return fetch(`http://localhost:5000/products/${params.id}`)
+            .then(response => {
+              console.log("Response status:", response.status);
+              return response.json();
+            })
+            .then(data => {
+              console.log(data); // Log the fetched data
+              return data;
+            })
+            .catch(error => {
+              console.error("Fetch error:", error);
+            });
+        }
+        
+        }
     ]
   },
 ]);

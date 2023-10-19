@@ -17,7 +17,7 @@ const Update = () => {
         const rating = form.rating.value;
         const obj = { name, photo, brand, type, price, description, rating };
         console.log(obj);
-        fetch(`http://localhost:5000/users/${loadedData._id}`,{
+        fetch(`http://localhost:5000/products/${loadedData._id}`,{
             method: "PUT",
             headers:{
                 'content-type' : 'application/json'
@@ -52,7 +52,7 @@ const Update = () => {
                                         <span className="label-text">Brand name
                                         </span>
                                     </label>
-                                    <select name="brand" className="select select-bordered w-full">
+                                    <select name="brand" value={loadedData.brand} className="select select-bordered w-full">
                                         <option value="" >Select a brand</option>
                                         <option value="Dior">DIOR</option>
                                         <option value="Urban decay">Urban Decay</option>
@@ -67,7 +67,7 @@ const Update = () => {
                                     <label className="label">
                                         <span className="label-text">Type</span>
                                     </label>
-                                    <select name="type" className="select select-bordered w-full">
+                                    <select name="type" value={loadedData.type} className="select select-bordered w-full">
                                         <option value="">Select a type</option>
                                         <option value="Perfume">Perfume</option>
                                         <option value="Cosmetics">Cosmetics</option>
@@ -79,13 +79,13 @@ const Update = () => {
                                     <label className="label">
                                         <span className="label-text">price</span>
                                     </label>
-                                    <input type="price" name="price" placeholder="00" className="input input-bordered" required />
+                                    <input type="price" name="price" defaultValue={loadedData.price}placeholder="00" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Short Description</span>
                                     </label>
-                                    <input type="text" name="description" placeholder="Description" className="input input-bordered" required />
+                                    <input type="text" name="description" defaultValue={loadedData.description}placeholder="Description" className="input input-bordered" required />
                                 </div>
                             </div>
                             <div className="w-full flex flex-col items-center justify-center">
@@ -93,7 +93,7 @@ const Update = () => {
                                     <label className="label">
                                         <span className="label-text">Rating</span>
                                     </label>
-                                    <input type="number" name="rating" placeholder="00" className="input input-bordered" required />
+                                    <input type="number" name="rating" defaultValue={loadedData.rating}placeholder="00" className="input input-bordered" required />
                                 </div>
                                 <div className="w-32 mt-4 border mx-auto" >
                                     <button className="btn block btn-primary">Update</button>
