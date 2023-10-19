@@ -4,13 +4,16 @@ const AddProduct = () => {
         const form = e.target;
         const name = form.name.value;
         const photo = form.photo.value;
-        const brand = form.brand.value || "DefaultType";
-        const type = form.type.value || "DefaultType";
+        const brandSelect = form.brand;
+        const typeSelect = form.type;
+        const brand = brandSelect.options[brandSelect.selectedIndex].value;
+        const type = typeSelect.options[typeSelect.selectedIndex].value;
         const price = form.price.value;
         const description = form.description.value;
         const rating = form.rating.value;
-        const obj = { name, photo, brand, type, price, description,rating }
-        console.log(obj);
+        const obj = { name, photo, brand, type, price, description, rating };
+        console.log(obj); // Add this line for debugging
+    
         fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
@@ -18,15 +21,16 @@ const AddProduct = () => {
             },
             body: JSON.stringify(obj)
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if(data.insertedId){
-                    alert('successfully added')
-                    form.reset()
-                }
-            })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.insertedId) {
+                alert('successfully added');
+                form.reset();
+            }
+        });
     }
+    
 
     return (
         <div>
@@ -61,22 +65,22 @@ const AddProduct = () => {
                                         </span>
                                     </label>
                                     <select name="brand" className="select select-bordered w-full">
-                                    <option value="" >Select a type</option>
-                                        <option value="Perfume">DIOR</option>
-                                        <option value="Cosmetics">Urban Decay</option>
-                                        <option value="Skincare">LO'real</option>
-                                        <option value="Accessories">Chanel</option>
-                                        <option value="Accessories">Revlon</option>
-                                        <option value="Accessories">Estee lauder</option>
+                                        <option value="" >Select a brand</option>
+                                        <option value="Dior">DIOR</option>
+                                        <option value="Urban decay">Urban Decay</option>
+                                        <option value="Lo'real">LO'real</option>
+                                        <option value="Chanel">Chanel</option>
+                                        <option value="Revlon">Revlon</option>
+                                        <option value="Estee lauder">Estee lauder</option>
                                     </select>
-                                    
+
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Type</span>
                                     </label>
                                     <select name="type" className="select select-bordered w-full">
-                                    <option value="">Select a brand</option>
+                                        <option value="">Select a type</option>
                                         <option value="Perfume">Perfume</option>
                                         <option value="Cosmetics">Cosmetics</option>
                                         <option value="Skincare">Skincare</option>
@@ -97,7 +101,7 @@ const AddProduct = () => {
                                 </div>
                             </div>
                             <div className="w-full flex flex-col items-center justify-center">
-                            <div className="form-control">
+                                <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Rating</span>
                                     </label>
