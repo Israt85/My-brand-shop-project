@@ -7,7 +7,8 @@ const Product = ({ products }) => {
     <div>
       
 
-      <div className="card w-96 h-full bg-base-100 shadow-xl">
+      {
+        products.length >0 ? <div className="card w-96 h-full bg-base-100 shadow-xl">
         <figure><img className="w-60 rounded-xl h-52" src={photo} alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
@@ -25,7 +26,8 @@ const Product = ({ products }) => {
             <Link to={`/update/${_id}`} ><button className="btn btn-primary">Update</button></Link>
           </div>
         </div>
-      </div>
+      </div> : <p>No data available</p>
+      }
     </div>
   );
 };
