@@ -1,7 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const Update = () => {
     const loadedData = useLoaderData()
+    const navigate = useNavigate()
     console.log(loadedData);
     const handleUpdate = e =>{
         e.preventDefault();
@@ -95,10 +96,12 @@ const Update = () => {
                                     </label>
                                     <input type="number" name="rating" defaultValue={loadedData.rating}placeholder="00" className="input input-bordered" required />
                                 </div>
-                                <div className="w-32 mt-4 border mx-auto" >
+                                <div className="w-32 flex gap-2 mt-4 border mx-auto" >
                                     <button className="btn block btn-primary">Update</button>
+                                    <button className="btn btn-primary" onClick={() => navigate(-1)}>Back</button>
                                 </div>
                             </div>
+                            
 
                         </form>
                        

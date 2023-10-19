@@ -28,11 +28,11 @@ const SignUp = () => {
         userSignUp(email,password)
         .then(result =>{
             console.log(result.user);
-            
+            navigate(location?.state ? location.state : "/");
             updateUserProfile(name,photo)
             .then(result=>{
                 console.log(result.user);
-                navigate(location?.state ? location.state : "/");
+               
             })
             .catch(err =>{
                 console.log(err);
@@ -50,7 +50,7 @@ const SignUp = () => {
                         <h1 className="text-5xl font-bold">SignUp now!</h1>
 
                     </div>
-                    <div className="card  w-96 shadow-2xl bg-base-100">
+                    <div className="card w-60 md:w-96 shadow-2xl bg-base-100">
                         <form onSubmit={handleSignUp} className="card-body w-full">
                             <div className="form-control">
                                 <label className="label">

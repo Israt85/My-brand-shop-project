@@ -8,7 +8,7 @@ const ExtraSection = () => {
     return (
         <div className="w-full h-auto border-2 bg-pink-100 border-[#FF8080] mt-10">
             <h2 className="text-3xl font-semibold text-[#FF8080] text-center">Top Influencers are Recomending our Services</h2>
-            <div className="mb-10 grid grid-cols-4 mt-6 text-center text-pink-600 mx-20">
+            <div className="mb-10 grid grid-cols-2 md:grid-cols-4 mt-6 text-center text-pink-600 mx-20">
                 <div>
                     <img className="w-52 h-60" src={selena} alt="" />
                     <h2>Selena Gomez</h2>
@@ -30,7 +30,7 @@ const ExtraSection = () => {
                     <h2 className="text-orange-700 font-bold">1.8M <p>Followers</p> </h2>
                 </div>
             </div>
-            <div className="flex mb-6 gap-4 justify-center items-center">
+            <div className="flex mx-4 mb-6 gap-4 justify-center items-center">
                 <div className="rating">
                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
@@ -38,7 +38,7 @@ const ExtraSection = () => {
                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                     <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
                 </div>
-                <div><h2 className="text-3xl font-semibold border-orange-600 border-l-2">The Influencers Highly recomended this site</h2></div>
+                <div><h2 className="text_xl md:text-3xl font-semibold border-orange-600 border-l-2">The Influencers Highly recomended this site</h2></div>
             </div>
         </div>
     );

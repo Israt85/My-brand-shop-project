@@ -5,9 +5,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
-    const {userLogin} = useContext(AuthContext)
+    const {userLogin, googleLogin} = useContext(AuthContext)
     const location = useLocation();
     const navigate = useNavigate()
+    const handleGoogleLogin =() =>{
+        googleLogin()
+        .then(result =>{
+            console.log(result.user);
+            navigate(location?.state ? location.state : "/");
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+      }
+   
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
@@ -28,6 +39,9 @@ const Login = () => {
             });
         }
       };
+     
+
+      
       
 
     return (
@@ -39,7 +53,7 @@ const Login = () => {
                         <h1 className="text-5xl font-bold">Login now!</h1>
                         
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-60 md:w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -56,11 +70,13 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
+                            <div><h2>New to this Website? please <Link className="font-bold text-blue-600" to="/signup">Signup</Link> </h2></div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-error">Login</button>
                                 <ToastContainer></ToastContainer>
                             </div>
-                            <div><h2>New to this Website? please <Link className="font-bold text-blue-600" to="/signup">Signup</Link> </h2></div>
+                            <button onClick={handleGoogleLogin} >Google Login</button>
+                            
                         </form>
                     </div>
                 </div>

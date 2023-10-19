@@ -20,20 +20,21 @@ const Navbar = () => {
     }
     return (
         <div>
-            <div className="navbar bg-base-300 rounded-xl">
-                <div className="flex-1">
+            <div className="navbar w-full max-w-screen-2xl bg-orange-100 rounded-xl">
+                <div className="flex-1 flex-col md:flex-row">
                     <img className='h-20 w-20 mr-2' src={logo} alt="" />
                     <a className="normal-case text-xl font-bold italic text-pink-700">GlOw<span className='text-orange-700'>PaLeTtE</span></a>
                 </div>
-                <div className=' w-40 border bg-red-50'>
+                <div className='flex flex-col ml-2  w-40 border bg-red-50'>
                 {
-                     user && <img className="w-20 h-20 mr-2 rounded-full" src={user.photoURL}/>
+                     user && <img className="w-20 h-20 mr-2 rounded-full" src={user.photoURL
+                     }/>
                 }
                 {
                     user && <h2 className='text-xl text-red-500'>{user.displayName}</h2>
                 }
                 </div>
-                <div className="flex items-center">
+                <div className="flex justify-between flex-col md:flex-row items-center">
                 <div><Link to="/addproduct"><button className='btn btn-ghost'>Add Product</button></Link></div>
                     <div className="dropdown dropdown-end ">
                        
