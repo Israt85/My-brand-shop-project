@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const SignUp = () => {
     const {userSignUp,updateUserProfile } = useContext(AuthContext)
+    const navigate = useNavigate()
     const [pass,setPass] = useState("")
     const handleSignUp = e =>{
         e.preventDefault()
@@ -27,9 +28,11 @@ const SignUp = () => {
         userSignUp(email,password)
         .then(result =>{
             console.log(result.user);
+            
             updateUserProfile(name,photo)
             .then(result=>{
                 console.log(result.user);
+                navigate(location?.state ? location.state : "/");
             })
             .catch(err =>{
                 console.log(err);

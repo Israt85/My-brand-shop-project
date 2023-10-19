@@ -13,6 +13,8 @@ import MainLayout from './Components/MainLayout/MainLayout.jsx';
 import AddProduct from './Components/AddProduct/AddProduct';
 import BrandDetails from './Components/BrandDetails';
 import Private from './Components/Private/Private';
+import Details from './Components/Details';
+import Update from './Components/Update';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,15 @@ const router = createBrowserRouter([
         element: <BrandDetails></BrandDetails>,
         loader: () => fetch("http://localhost:5000/products")
       },
+      {
+        path: "/details/:id",
+        element: <Private><Details></Details></Private>,
+        
+      },{
+        path : "/update/:id",
+        element: <Update></Update>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+      }
     ]
   },
 ]);

@@ -1,5 +1,9 @@
-const AddProduct = () => {
-    const handlerAdd = e => {
+import { useLoaderData } from "react-router-dom";
+
+const Update = () => {
+    const loadedData = useLoaderData()
+    console.log(loadedData);
+    const handleUpdate = e =>{
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -13,51 +17,35 @@ const AddProduct = () => {
         const rating = form.rating.value;
         const obj = { name, photo, brand, type, price, description, rating };
         console.log(obj);
-    
-        fetch('http://localhost:5000/products', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
+        fetch(`http://localhost:5000/users/${loadedData._id}`,{
+            method: "PUT",
+            headers:{
+                'content-type' : 'application/json'
             },
             body: JSON.stringify(obj)
         })
-        .then(res => res.json())
-        .then(data => {
+        .then(res=> res.json())
+        .then(data =>{
             console.log(data);
-            if (data.insertedId) {
-                alert('successfully added');
-                form.reset();
-            }
-        });
+        })
     }
-    
-
     return (
-        <div>
-            <div>
-                <div className=" border mx-auto mt-10 h-auto">
-                    <div>
-                        <div className=" w-full pb-4 text-center">
-                            <div>
-                                <h1 className="text-3xl font-bold">Add product here</h1>
-                            </div>
-
-                        </div>
-
-                        <form onSubmit={handlerAdd} >
+        <div className="bg-pink-100">
+            <h2>Please Update here</h2>
+            <form onSubmit={handleUpdate} >
                             <div className="card-body grid grid-cols-1 lg:grid-cols-2 gap-6 mx-10">
 
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Image</span>
                                     </label>
-                                    <input type="text" name="photo" placeholder="image url.." className="input input-bordered" />
+                                    <input type="text" defaultValue={loadedData.photo} name="photo" placeholder="image url.." className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
-                                    <input type="text" name="name" placeholder="name..." className="input input-bordered" />
+                                    <input type="text" name="name" defaultValue={loadedData.name} placeholder="name..." className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
@@ -108,17 +96,14 @@ const AddProduct = () => {
                                     <input type="number" name="rating" placeholder="00" className="input input-bordered" required />
                                 </div>
                                 <div className="w-32 mt-4 border mx-auto" >
-                                    <button className="btn block btn-primary">Add Product</button>
+                                    <button className="btn block btn-primary">Update</button>
                                 </div>
                             </div>
 
                         </form>
-
-                    </div>
-                </div>
-            </div>
+                       
         </div>
     );
 };
 
-export default AddProduct;
+export default Update;
