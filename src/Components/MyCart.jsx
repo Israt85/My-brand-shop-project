@@ -10,7 +10,7 @@ const MyCart = () => {
     const [myCart, setMyCart] = useState(loadedCart);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/cart/${id}`, {
+        fetch(` https://my-brand-shop-server-hkus42lxn-israts-projects.vercel.app/cart/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -25,7 +25,7 @@ const MyCart = () => {
 
     return (
         <div>
-            <h2 className='text-2xl font-bold text-center text-pink-900'>Cart Items: {loadedCart.length}</h2>
+            <h2 className='text-2xl font-bold text-center text-pink-900'>Cart Items</h2>
             {
                 myCart.map(cart => (
                     <div key={cart._id}>

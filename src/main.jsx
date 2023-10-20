@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       {
         path:"/brand/:brand",
         element: <Private><BrandDetails></BrandDetails></Private>,
-        loader: () => fetch("http://localhost:5000/products")
+        loader: () => fetch(" https://my-brand-shop-server-hkus42lxn-israts-projects.vercel.app/products")
       },
       {
         path: "/details/:id",
@@ -52,14 +52,14 @@ const router = createBrowserRouter([
       },{
         path : "/update/:id",
         element: <Private><Update></Update></Private>,
-        loader: ({ params }) => { return fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({ params }) => { return fetch(` https://my-brand-shop-server-hkus42lxn-israts-projects.vercel.app/products/${params.id}`)
            
         }
         
         },{
           path: '/cart',
           element:<Private><MyCart></MyCart></Private>,
-          loader: () =>fetch('http://localhost:5000/cart')
+          loader: () =>fetch(' https://my-brand-shop-server-hkus42lxn-israts-projects.vercel.app/cart')
         }
     ]
   },

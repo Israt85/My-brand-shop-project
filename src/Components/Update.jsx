@@ -20,7 +20,7 @@ const Update = () => {
         const rating = form.rating.value;
         const obj = { name, photo, brand, type, price, description, rating };
         console.log(obj);
-        fetch(`http://localhost:5000/products/${loadedData._id}`,{
+        fetch(` https://my-brand-shop-server-hkus42lxn-israts-projects.vercel.app/products/${loadedData._id}`,{
             method: "PUT",
             headers:{
                 'content-type' : 'application/json'
