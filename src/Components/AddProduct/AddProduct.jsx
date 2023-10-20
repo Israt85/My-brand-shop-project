@@ -1,3 +1,7 @@
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
+
 const AddProduct = () => {
     const handlerAdd = e => {
         e.preventDefault();
@@ -25,7 +29,7 @@ const AddProduct = () => {
         .then(data => {
             console.log(data);
             if (data.insertedId) {
-                alert('successfully added');
+                toast('successfully added');
                 form.reset();
             }
         });
@@ -109,6 +113,7 @@ const AddProduct = () => {
                                 </div>
                                 <div className="w-32 mt-4 border mx-auto" >
                                     <button className="btn block btn-primary">Add Product</button>
+                                    <ToastContainer></ToastContainer>
                                 </div>
                             </div>
 

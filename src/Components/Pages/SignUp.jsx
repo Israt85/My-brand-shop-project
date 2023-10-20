@@ -18,6 +18,7 @@ const SignUp = () => {
         const photo = form.photo.value;
         const obj = {name,email,password,date,photo}
         console.log(obj);
+        
         if(!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/.test(password)){
             setPass("Minimum six characters, at least one letter, one number and one special character")
             return;
@@ -25,6 +26,7 @@ const SignUp = () => {
            else{
             toast("You successfully created account in this website!!");
            }
+           setPass("")
         userSignUp(email,password)
         .then(result =>{
             console.log(result.user);

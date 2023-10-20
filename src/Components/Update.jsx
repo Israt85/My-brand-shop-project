@@ -1,4 +1,6 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Update = () => {
     const loadedData = useLoaderData()
@@ -27,12 +29,15 @@ const Update = () => {
         })
         .then(res=> res.json())
         .then(data =>{
-            console.log(data);
+        if(data.modifiedCount>0){
+              toast('Updated successfully');
+              
+        }
         })
     }
     return (
         <div className="bg-pink-100">
-            <h2>Please Update here</h2>
+            <h2 className="text-center text-xl py-6">Please Update here</h2>
             <form onSubmit={handleUpdate} >
                             <div className="card-body grid grid-cols-1 lg:grid-cols-2 gap-6 mx-10">
 
@@ -53,7 +58,7 @@ const Update = () => {
                                         <span className="label-text">Brand name
                                         </span>
                                     </label>
-                                    <select name="brand" value={loadedData.brand} className="select select-bordered w-full">
+                                    <select name="brand" defaultValue={loadedData.brand} className="select select-bordered w-full">
                                         <option value="" >Select a brand</option>
                                         <option value="Dior">DIOR</option>
                                         <option value="Urban decay">Urban Decay</option>
@@ -68,7 +73,7 @@ const Update = () => {
                                     <label className="label">
                                         <span className="label-text">Type</span>
                                     </label>
-                                    <select name="type" value={loadedData.type} className="select select-bordered w-full">
+                                    <select name="type" defaultValue={loadedData.type} className="select select-bordered w-full">
                                         <option value="">Select a type</option>
                                         <option value="Perfume">Perfume</option>
                                         <option value="Cosmetics">Cosmetics</option>
@@ -98,7 +103,8 @@ const Update = () => {
                                 </div>
                                 <div className="w-32 flex gap-2 mt-4 border mx-auto" >
                                     <button className="btn block btn-primary">Update</button>
-                                    <button className="btn btn-primary" onClick={() => navigate(-1)}>Back</button>
+                                    <ToastContainer></ToastContainer>
+                                    <button className="btn btn-primary" onClick={() => navigate(-1)}> Back</button>
                                 </div>
                             </div>
                             
