@@ -8,42 +8,48 @@ const SignUp = () => {
     const {userSignUp,updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate()
     const [pass,setPass] = useState("")
-    const handleSignUp = e =>{
-        e.preventDefault()
+    
+    const handleSignUp = e => {
+        e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         const date = form.date.value;
         const photo = form.photo.value;
-        const obj = {name,email,password,date,photo}
-        console.log(obj);
-        
-        if(!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/.test(password)){
-            setPass("Minimum six characters, at least one letter, one number and one special character")
-            return;
-           }
-           else{
-            toast("You successfully created account in this website!!");
-           }
-           setPass("")
-        userSignUp(email,password)
-        .then(result =>{
-            console.log(result.user);
-            navigate(location?.state ? location.state : "/");
-            updateUserProfile(name,photo)
-            .then(result=>{
+    
+      
+        if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/.test(password)) {
+            setPass("Minimum six characters, at least one letter, one number and one special character");
+            return; 
+        }
+    
+       
+        setPass("");
+    
+      
+        userSignUp(email, password)
+            .then(result => {
                 console.log(result.user);
-                
+                navigate(location?.state ? location.state : "/")
+    
+                updateUserProfile(name, photo)
+                    .then(result => {
+                        console.log(result.user);
+                        
+                        return;
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+    
             })
-            .catch(err =>{
-                console.log(err);
-            })
-
-        })
-        .catch(err =>{console.error(err)})
-
-    }
+            .catch(err => {
+                console.error(err);
+            });
+    };
+    
+    
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -70,7 +76,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Photo Url</span>
                                 </label>
-                                <input type="text" name="photo" placeholder="Your name" className="input input-bordered" required />
+                                <input type="text" name="photo" placeholder="Your photo url" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">

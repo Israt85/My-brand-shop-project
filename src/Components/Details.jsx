@@ -38,8 +38,8 @@ const Details = () => {
           <p className=" text-orange-700 font-bold text-xl">{description}</p> 
           
           <div className=" justify-center text-orange-700 font-bold flex gap-6 items-center">
-            <h2>${price}</h2>
-            <h2>{rating}</h2>
+            <h2>Price : ${price}</h2>
+            
           </div>
              <button onClick={handleAddToCart} className="btn bg-orange-500">Add to cart</button>
              <ToastContainer></ToastContainer>

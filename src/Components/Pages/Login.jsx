@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { FcGoogle, } from "react-icons/fc";
 
 const Login = () => {
     const {userLogin, googleLogin} = useContext(AuthContext)
@@ -75,7 +76,8 @@ const Login = () => {
                                 <button className="btn btn-error">Login</button>
                                 <ToastContainer></ToastContainer>
                             </div>
-                            <button onClick={handleGoogleLogin} >Google Login</button>
+                            <button className="btn-ghost border-green-700 gap-2 py-2 flex items-center justify-center rounded-xl" onClick={handleGoogleLogin} > 
+                            <span className="text-xl"><FcGoogle></FcGoogle></span>Google Login</button>
                             
                         </form>
                     </div>
