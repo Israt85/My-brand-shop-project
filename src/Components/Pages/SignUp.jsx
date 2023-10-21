@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const SignUp = () => {
     const {userSignUp,updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation();
     const [pass,setPass] = useState("")
     
     const handleSignUp = e => {

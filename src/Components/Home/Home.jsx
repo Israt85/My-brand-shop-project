@@ -11,7 +11,7 @@ const Home = () => {
     const brands = useLoaderData()
     console.log(brands)
     return (
-        <div className="bg-orange-100">
+        <div className="bg-orange-100 dark:bg-slate-800">
             <Banner></Banner>
             <Brands brands={brands}></Brands>
             <ExtraSection></ExtraSection>

@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/gplogo.jpg'
-import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import { useContext } from 'react';
 
 
 const Navbar = () => {
     const {user,userLogOut} = useContext(AuthContext)
     console.log(user);
+    
 
     const hangleLogOut = () =>{
         userLogOut()
@@ -67,6 +68,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
+                
             </div>
         </div>
     );
