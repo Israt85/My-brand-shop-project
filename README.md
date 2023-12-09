@@ -1,8 +1,9 @@
-# React + Vite
+***My Project***
+* users can see on the home page the brand name and pic but it will be show on the home.
+* If users click the brands it'll show the data including their products.
+* If users want to check details there is a details button. Also they can Update the data.
+* Also a add product form if users want they can add product via the form. 
+* If users go on the fetails button they'll show a add to cart btn they can add to cart this.
+* Also has a cart icon if click the cart they will show the all cart which they have added..if they want they can delete from this.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+My live site link : https://my-brand-shop.web.app.
